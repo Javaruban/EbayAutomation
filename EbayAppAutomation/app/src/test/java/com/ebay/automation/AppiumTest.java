@@ -1,3 +1,4 @@
+/*
 package com.ebay.automation;
 
 import junit.framework.Assert;
@@ -35,6 +36,7 @@ public class AppiumTest {
 
     @Before
     public void setUp() throws MalformedURLException {
+*/
 /*        // Created object of DesiredCapabilities class.
         DesiredCapabilities capabilities = new DesiredCapabilities();
 
@@ -64,7 +66,8 @@ public class AppiumTest {
         // Set appium server address and port number in URL string.
         // It will launch calculator app in android device.
         driver = new RemoteWebDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
-        driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);*/
+        driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);*//*
+
 
         AppiumServiceBuilder builder = new AppiumServiceBuilder()
                 .withAppiumJS(new File("/usr/local/lib/node_modules/appium/build/lib/main.js"))
@@ -72,7 +75,9 @@ public class AppiumTest {
                 .withArgument(GeneralServerFlag.LOG_LEVEL, "info")
                 //.withLogFile(new File(System.getProperty("user.dir") + "/target/logs/sample.txt"))
                 .usingAnyFreePort()
-                /* and so on */;
+                */
+/* and so on *//*
+;
 
 
         appiumService = builder.build();
@@ -118,6 +123,7 @@ public class AppiumTest {
 
     }
 
+*/
 /*    @Test
     public void clickRegister() {
 
@@ -132,7 +138,8 @@ public class AppiumTest {
         //scrollTo("Handpicked by eBay");
         //driver.manage().timeouts().implicitlyWait(30,TimeUnit.SECONDS);
 
-    }*/
+    }*//*
+
 
     private MobileElement findElementByName(String elementName){
        return (MobileElement) driver.findElement(By.xpath("//android.widget.Button[@text='"+elementName+"']"));
@@ -185,14 +192,21 @@ public class AppiumTest {
 
 
 
-        /* Any android.widget.RadioButton with text value 'Use Testdroid Cloud' */
+        */
+/* Any android.widget.RadioButton with text value 'Use Testdroid Cloud' *//*
+
         //driver.findElement(By.xpath("//android.widget.RadioButton[@text='Use Testdroid Cloud']"));
 
-        /* Any android.widget.EditText with resource-id value 'com.bitbar.testdroid:id/editText1' */
+        */
+/* Any android.widget.EditText with resource-id value 'com.bitbar.testdroid:id/editText1' *//*
+
         // driver.findElement(By.xpath("//android.widget.EditText[@resource-id='com.bitbar.testdroid:id/editText1']"));
 
-        /* Button index 1, with parent LinearLayout index 2, with parent LinearLayout index 1, with parent ScrollView index 1. */
+        */
+/* Button index 1, with parent LinearLayout index 2, with parent LinearLayout index 1, with parent ScrollView index 1. *//*
+
         // driver.findElement(By.xpath("//android.widget.ScrollView[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout[2]/android.widget.Button[1]"));
 
     }
 }
+*/
