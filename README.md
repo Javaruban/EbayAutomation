@@ -1,4 +1,4 @@
-# EbayAutomation
+# AndroidAutomationFramework
 This is Automation Testing Framework for ebay android application
 
 prerequisite:
@@ -6,6 +6,7 @@ prerequisite:
  open terminal and type command:
  brew install wget
  STEP1: INSTALL HOMEBREW
+ 
  $ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
 STEP2: INSTALL NODE.JS
