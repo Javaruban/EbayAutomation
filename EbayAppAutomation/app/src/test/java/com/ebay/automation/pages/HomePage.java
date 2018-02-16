@@ -19,7 +19,6 @@ public class HomePage extends AppiumHelper implements HomePageListener {
     @FindBy(xpath = "//android.widget.Button[@text='RELOAD']")
     public MobileElement reloadButton;
 
-
     @FindBy(xpath = "//android.widget.Button[@text='REGISTER']")
     public MobileElement registerButton;
 
@@ -38,8 +37,6 @@ public class HomePage extends AppiumHelper implements HomePageListener {
     @FindBy(xpath = "//android.widget.TextView[contains(@resource-id,'search_box')]")
     public MobileElement searchBoxTxtVw;
 
-       //android.widget.TextView[@content-desc="Sign in,double tap to activate"]
-    //com.ebay.mobile:id/textview_sign_in_status
 
     public HomePage(AndroidDriver driver) {
         PageFactory.initElements(new AppiumFieldDecorator(driver), this);
@@ -60,32 +57,18 @@ public class HomePage extends AppiumHelper implements HomePageListener {
     }
 
     @Override
-    public boolean isUserSignedIn() {
-        openSlidingMenu();
-        return isElementPresent(displayName);
+    public boolean isUserNotSignedIn() {return isElementPresent(signText);
     }
-
     @Override
     public void clickRegister() {
         clickElement(registerButton);
     }
 
     @Override
-    public void clickSignIn() {
-        clickElement(signInButton);
+    public void clickSignIn() {clickElement(signInButton);}
 
-
-    }
-
-    /*
-     Navigate to sign in Page
-     */
     @Override
-    public void navigateToSignInPage() {
-        //openSlidingMenu();
-        clickElement(signText);
-
-    }
+    public void navigateToSignInPage() {clickElement(signText);}
 
     @Override
     public void openSlidingMenu() {

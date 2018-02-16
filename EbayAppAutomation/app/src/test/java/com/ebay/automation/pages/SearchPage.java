@@ -29,7 +29,7 @@ public class SearchPage extends AppiumHelper implements SearchPageListener {
 
     @Override
     public void enterValuesInSearchBox(String searchString) {
-        typeText(searchBox, "toys");
+        typeText(searchBox, searchString);
 
     }
 

@@ -16,13 +16,12 @@ import io.appium.java_client.MobileElement;;
 public class AppiumHelper extends AppiumController{
 
 
-    //wait for maximum 30 seconds before any operation
-    WebDriverWait wait = new WebDriverWait(AppiumController.instance.driver, 30);
+    private static final int WAIT_TIME = 30;
+    WebDriverWait wait = new WebDriverWait(AppiumController.instance.driver, WAIT_TIME);
 
     protected void clickElement(MobileElement mobileElement) {
         mobileElement = waitTillElementVisible(mobileElement);
         mobileElement.click();
-        //WebDriverWait wait = new WebDriverWait(AppiumController.instance.driver, 30);
     }
 
     /*
@@ -86,7 +85,7 @@ public class AppiumHelper extends AppiumController{
         int startx = size.width / 2;
         System.out.println("Start swipe operation");
         AppiumController.instance.driver.swipe(startx, starty, startx, endy, timeInSec * 1000);
-        WebDriverWait wait = new WebDriverWait(AppiumController.instance.driver, 30);
+        WebDriverWait wait = new WebDriverWait(AppiumController.instance.driver, WAIT_TIME);
 
     }
 
@@ -111,7 +110,7 @@ public class AppiumHelper extends AppiumController{
         int startx = size.width / 2;
         System.out.println("Start swipe operation");
         AppiumController.instance.driver.swipe(startx, endy, startx, starty, timeInSec * 1000);
-        WebDriverWait wait = new WebDriverWait(AppiumController.instance.driver, 30);
+        WebDriverWait wait = new WebDriverWait(AppiumController.instance.driver, WAIT_TIME);
 
     }
 
@@ -134,7 +133,7 @@ public class AppiumHelper extends AppiumController{
         int starty = size.height / 2;
         System.out.println("Start swipe operation");
         AppiumController.instance.driver.swipe(startx, starty, endx, starty, timeInSec * 1000);
-        WebDriverWait wait = new WebDriverWait(AppiumController.instance.driver, 30);
+        WebDriverWait wait = new WebDriverWait(AppiumController.instance.driver, WAIT_TIME);
 
     }
 
@@ -157,7 +156,7 @@ public class AppiumHelper extends AppiumController{
         int starty = size.height / 2;
         System.out.println("Start swipe operation");
         AppiumController.instance.driver.swipe(endx, starty, startx, starty, timeInSec * 1000);
-        WebDriverWait wait = new WebDriverWait(AppiumController.instance.driver, 30);
+        WebDriverWait wait = new WebDriverWait(AppiumController.instance.driver, WAIT_TIME);
 
     }
 
@@ -171,7 +170,7 @@ public class AppiumHelper extends AppiumController{
         mobileElement.clear();
         mobileElement.sendKeys(enterString);
         hideKeyboard();
-        WebDriverWait wait = new WebDriverWait(AppiumController.instance.driver, 30);
+        WebDriverWait wait = new WebDriverWait(AppiumController.instance.driver, WAIT_TIME);
     }
 
 

@@ -19,6 +19,13 @@ import io.appium.java_client.service.local.flags.GeneralServerFlag;
 
 public class AppiumController {
 
+    private static final String APPIUM_VERSION = "1.3.2";
+    private static final String PLATFORM_NAME = "android";
+    private static final String DEVICE_NAME = "Pixel_4548";
+    private static final String APP_VERSION= "8.1.0";
+    private static final String APP_PACKAGE = "com.ebay.mobile";
+    private static final String APP_ACTIVITY = "com.ebay.mobile.activities.MainActivity";
+
     public static OS executionOS = OS.ANDROID;
 
     public enum OS {
@@ -49,16 +56,14 @@ public class AppiumController {
                 System.out.println("Appium Service Address : - "+ appiumServiceUrl);
 
                 DesiredCapabilities capabilities = new DesiredCapabilities();
-                capabilities.setCapability("appium-version", "1.3.2");
-                capabilities.setCapability("platformName", "android");
-                capabilities.setCapability("deviceName", "Pixel_4548");
-                capabilities.setCapability(CapabilityType.VERSION, "8.1.0");
-                capabilities.setCapability("appPackage", "com.ebay.mobile");
-                capabilities.setCapability("appActivity", "com.ebay.mobile.activities.MainActivity");
+                capabilities.setCapability("appium-version", APPIUM_VERSION);
+                capabilities.setCapability("platformName", PLATFORM_NAME);
+                capabilities.setCapability("deviceName", DEVICE_NAME);
+                capabilities.setCapability(CapabilityType.VERSION, APP_VERSION);
+                capabilities.setCapability("appPackage", APP_PACKAGE);
+                capabilities.setCapability("appActivity", APP_ACTIVITY);
 
-                driver = new AndroidDriver(new URL(appiumServiceUrl), capabilities);//if called via desktop appium http://127.0.0.1:4723/wd/hub
-                //driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-
+                driver = new AndroidDriver(new URL(appiumServiceUrl), capabilities);
                 break;
         }
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);

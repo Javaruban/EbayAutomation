@@ -8,7 +8,7 @@ public interface HomePageListener {
 
     public boolean isHomePageLoaded();
 
-    public boolean isUserSignedIn();
+    public boolean isUserNotSignedIn();
 
     public void clickRegister();
 

@@ -20,12 +20,11 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     testCompile 'junit:junit:4.12'
-
     testCompile 'io.appium:java-client:3.3.0'
     //androidTestCompile 'com.android.support.test:runner:1.0.1'
     androidTestCompile 'com.android.support.test.espresso:espresso-core:2.0'
@@ -36,4 +35,10 @@ dependencies {
     androidTestCompile 'com.android.support.test:testing-support-lib:0.1'
     //testImplementation 'org.testng:testng:6.9.6'
     testCompile 'org.testng:testng:6.9.6'
+    compile files('libs/poi-3.17.jar')
+    compile files('libs/poi-examples-3.17.jar')
+    compile files('libs/poi-excelant-3.17.jar')
+    compile files('libs/poi-ooxml-3.17.jar')
+    compile files('libs/poi-ooxml-schemas-3.17.jar')
+    compile files('libs/poi-scratchpad-3.17.jar')
 }
