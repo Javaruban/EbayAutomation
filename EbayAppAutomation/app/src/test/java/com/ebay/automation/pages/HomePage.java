@@ -17,31 +17,87 @@ import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 
 public class HomePage extends AppiumHelper implements HomePageListener {
 
+    private static final int SECONDS=1;
+
     @FindBy(xpath = "//android.widget.Button[@text='RELOAD']")
     public MobileElement reloadButton;
 
 
-    @FindBy(xpath = "//*[@text='Register']")
+    @FindBy(xpath = "//android.widget.Button[@text='REGISTER']")
     public MobileElement registerButton;
 
-    @FindBy(xpath = "//*[@text='SELLING']")
-    public MobileElement sellingButton;
+    @FindBy(xpath = "//android.widget.Button[@text='SIGN IN']")
+    public MobileElement signInButton;
+
+    @FindBy(xpath = "//android.widget.TextView[contains(@resource-id,'textview_sign_in_status')]")
+    public MobileElement displayName;
+
+    @FindBy(xpath = "//android.widget.TextView[contains(@resource-id,'textview_sign_out_status')]")
+    public MobileElement signText;
+
+    @FindBy(xpath = "//android.widget.ImageButton[contains(@resource-id,'home')]")
+    public MobileElement menuButton;
+
+    @FindBy(xpath = "//android.widget.TextView[contains(@resource-id,'search_box')]")
+    public MobileElement searchBoxTxtVw;
+
+
 
     public HomePage(AndroidDriver driver) {
         PageFactory.initElements(new AppiumFieldDecorator(driver), this);
     }
 
-
     @Override
     public boolean isHomePageLoaded() {
-        return isVisible(registerButton);
+
+        topBottomSwipe(SECONDS);
+        return isElementVisibleWaitAndCheck(registerButton);
     }
 
     @Override
-    public void clickElement() {
+    public boolean isUserSignedIn() {
+        openSlidingMenu();
+        return isElementPresent(displayName);
+    }
 
-        clickElement(reloadButton);
+    @Override
+    public void clickRegister() {
+        clickElement(registerButton);
+    }
+
+    @Override
+    public void clickSignIn() {
+        clickElement(signInButton);
 
 
     }
+
+    /*
+     Navigate to sign in Page
+     */
+    @Override
+    public void navigateToSignInPage() {
+        //openSlidingMenu();
+        clickElement(signText);
+
+    }
+
+    @Override
+    public void openSlidingMenu() {
+        clickElement(menuButton);
+    }
+
+    @Override
+    public void closeSlidingMenu() {
+        rightLeftSwipe(SECONDS);//closing sliding  navigation menu
+    }
+
+
+    public void searchProduct(){
+        clickElement(searchBoxTxtVw);
+
+
+    }
+
+
 }

@@ -8,7 +8,15 @@ public interface HomePageListener {
 
     public boolean isHomePageLoaded();
 
-    public void clickElement();
+    public boolean isUserSignedIn();
 
+    public void clickRegister();
 
+    public void clickSignIn();
+
+    public void navigateToSignInPage();
+
+    public void openSlidingMenu();
+
+    public void closeSlidingMenu();
 }
