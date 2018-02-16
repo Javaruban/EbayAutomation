@@ -1,15 +1,13 @@
 package com.ebay.automation.helper;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.ElementNotVisibleException;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.util.concurrent.TimeUnit;
+import java.util.List;
 
-import io.appium.java_client.MobileElement;
-import io.appium.java_client.SwipeElementDirection;
+import io.appium.java_client.MobileElement;;
 
 /**
  * Created by Ruban on 15/02/18.
@@ -22,11 +20,18 @@ public class AppiumHelper extends AppiumController{
     WebDriverWait wait = new WebDriverWait(AppiumController.instance.driver, 30);
 
     protected void clickElement(MobileElement mobileElement) {
-        //mobileElement = waitTillElementVisible(mobileElement);
+        mobileElement = waitTillElementVisible(mobileElement);
         mobileElement.click();
         //WebDriverWait wait = new WebDriverWait(AppiumController.instance.driver, 30);
     }
 
+    /*
+          itemNumber should start from zero
+     */
+    public void selectItem(List<MobileElement> listMobileElement, int itemNumber){
+        waitTillElementVisible(listMobileElement.get(itemNumber-1));
+        listMobileElement.get(itemNumber-1).click();
+    }
 
     protected boolean isElementVisibleWaitAndCheck(MobileElement mobileElement) {
 
@@ -157,18 +162,17 @@ public class AppiumHelper extends AppiumController{
     }
 
 
-    /**
-     * This method only work for this page and assumes the app supports keyboard hide on click-away.
-     */
-    public void hideKeyboard(MobileElement mobileElement) {
-        mobileElement.click();
+    public void hideKeyboard() {
+        AppiumController.instance.driver.hideKeyboard();
     }
 
 
     public void typeText(MobileElement mobileElement, String enterString){
-
         mobileElement.clear();
         mobileElement.sendKeys(enterString);
+        hideKeyboard();
+        WebDriverWait wait = new WebDriverWait(AppiumController.instance.driver, 30);
     }
+
 
 }

@@ -1,6 +1,5 @@
 package com.ebay.automation.pages;
 
-
 import com.ebay.automation.helper.AppiumHelper;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -13,29 +12,22 @@ import io.appium.java_client.pagefactory.AppiumFieldDecorator;
  * Created by Ruban on 16/02/18.
  */
 
-public class SearchPage extends AppiumHelper implements SearchPageListener {
-
+public class SearchResultPage extends AppiumHelper implements SearchResultPageListener {
 
     @FindBy(xpath = "//android.widget.EditText[contains(@resource-id,'search_src_text')]")
     public MobileElement searchBox;
 
 
-    @FindBy(xpath = "//android.widget.ListView[contains(@resource-id,'suggestionList')]")
-    public List<MobileElement> suggestionList;
+    @FindBy(xpath = "//android.support.v7.widget.RecyclerView[contains(@resource-id,'recycler')]")
+    public List<MobileElement> suggestedItemList;
 
-    public SearchPage(AndroidDriver driver) {
+    public SearchResultPage(AndroidDriver driver) {
         PageFactory.initElements(new AppiumFieldDecorator(driver), this);
     }
 
-    @Override
-    public void enterValuesInSearchBox(String searchString) {
-        typeText(searchBox, "toys");
-
-    }
 
     @Override
-    public void selectItemFromSuggestionBox(int itemNumber){
-        selectItem(suggestionList, itemNumber);
-
+    public void selectItemFromSearchResult(int itemNumber) {
+        selectItem(suggestedItemList, itemNumber);
     }
 }

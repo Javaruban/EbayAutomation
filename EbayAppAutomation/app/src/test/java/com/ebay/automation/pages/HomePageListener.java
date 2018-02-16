@@ -19,4 +19,6 @@ public interface HomePageListener {
     public void openSlidingMenu();
 
     public void closeSlidingMenu();
+
+    public void clickSearchProductBox();
 }

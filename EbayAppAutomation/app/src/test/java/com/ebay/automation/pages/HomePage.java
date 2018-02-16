@@ -1,12 +1,9 @@
 package com.ebay.automation.pages;
 
 import com.ebay.automation.helper.AppiumHelper;
-
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-
-import java.util.concurrent.TimeUnit;
-
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
@@ -41,7 +38,8 @@ public class HomePage extends AppiumHelper implements HomePageListener {
     @FindBy(xpath = "//android.widget.TextView[contains(@resource-id,'search_box')]")
     public MobileElement searchBoxTxtVw;
 
-
+       //android.widget.TextView[@content-desc="Sign in,double tap to activate"]
+    //com.ebay.mobile:id/textview_sign_in_status
 
     public HomePage(AndroidDriver driver) {
         PageFactory.initElements(new AppiumFieldDecorator(driver), this);
@@ -50,8 +48,15 @@ public class HomePage extends AppiumHelper implements HomePageListener {
     @Override
     public boolean isHomePageLoaded() {
 
+        boolean isElementPresent;
         topBottomSwipe(SECONDS);
-        return isElementVisibleWaitAndCheck(registerButton);
+        try{
+            isElementPresent = isElementVisibleWaitAndCheck(reloadButton);
+        }catch(NoSuchElementException NSE){
+            isElementPresent = false;
+        }
+
+        return isElementPresent;
     }
 
     @Override
@@ -92,11 +97,9 @@ public class HomePage extends AppiumHelper implements HomePageListener {
         rightLeftSwipe(SECONDS);//closing sliding  navigation menu
     }
 
-
-    public void searchProduct(){
+    @Override
+    public void clickSearchProductBox() {
         clickElement(searchBoxTxtVw);
-
-
     }
 
 
